@@ -36,6 +36,7 @@ namespace AppAzureSQL.ViewModels
 
         public ItemsViewModel()
         {
+            _instance = this;
             Title = "Inicio";
             Drivers = new ObservableCollection<DriverModel>();
             LoadDriversCommand = new Command(async () => await ExecuteLoadItemsCommand());
