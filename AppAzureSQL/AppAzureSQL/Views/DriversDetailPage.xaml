@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:converter="clr-namespace:AppAzureSQL.Converters"
+             mc:Ignorable="d"
+             Title="Prueba"
+             x:Class="AppAzureSQL.Views.DriversDetailPage">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Guardar" Command="{Binding SaveCommand}"/>
+        <ToolbarItem Text="Eliminar" Command="{Binding DeleteCommand}"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converter:ImageConverter x:Key="ImageConverter"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <!--TableView>
+            <TableView.Root>
+                <TableSection>
+                    <EntryCell x:Name="txtTitle" Label="Título" Text="{Binding Title}" />
+                    <EntryCell x:Name="txtDate" Label="Fecha" Text="{Binding TripDate}" />
+                    <EntryCell x:Name="txtRating" Label="Rating" Keyboard="Numeric" Text="{Binding Rating}" />
+                    <EntryCell x:Name="txtNotes" Label="Notas" Text="{Binding Notes}" />
+                    <EntryCell x:Name="txtLatitude" Label="Latitud" Keyboard="Numeric" Text="{Binding Latitude}" />
+                    <EntryCell x:Name="txtLongitude" Label="Longitud" Keyboard="Numeric" Text="{Binding Longitude}" />
+                    <EntryCell x:Name="txtImageUrl" Label="Imagen" Text="{Binding ImageUrl}" />
+                </TableSection>
+            </TableView.Root>
+        </-->
+        <ScrollView>
+            <StackLayout>
+                <ActivityIndicator
+                    IsRunning="{Binding IsBusy}"
+                    d:IsRunning="True"/>
+                <Image 
+                    Source="{Binding Picture, Converter={StaticResource ImageConverter}}"/>
+                <Entry 
+                    Placeholder="Nombre" 
+                    Text="{Binding Name}"/>
+                <Entry 
+                    Placeholder="Status" 
+                    VerticalOptions="FillAndExpand" 
+                    Text="{Binding Status}"/>
+                <Button
+                    Text="Obtener ubicacion"
+                    Command="{Binding GetLocationCommand}"/>
+                <Entry 
+                    Placeholder="Latitud" 
+                    Text="{Binding Latitude}"/>
+                <Entry 
+                    Placeholder="Longitud" 
+                    Text="{Binding Longitude}"/>
+                <Button 
+                    Text="Tomar fotografia" 
+                    Command="{Binding TakePictureCommand}"/>
+                <Button 
+                    Text="Seleccionar fotografia" 
+                    Command="{Binding SelectPictureCommand}"/>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
